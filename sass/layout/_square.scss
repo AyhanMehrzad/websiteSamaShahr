@@ -1,0 +1,121 @@
+.square {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background: linear-gradient(310deg, #000000 92%, #1f445a);
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  &__half {
+    width: 50%;
+    height: 100%;
+    margin-bottom: 0.5rem;
+
+    &-help {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      height: 20%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    &-title {
+      text-align: center;
+      font-size: 3rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    &-dis {
+      font-size: 1.5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    &-line {
+      width: 20rem;
+      height: 0.5rem;
+      background-color: #fff;
+      margin-top: 1rem;
+      border-radius: 5rem;
+    }
+    &-item {
+      //   margin-top: 2rem;
+      width: 30rem;
+      height: 35rem;
+      border: 0.2rem solid #222220;
+      border-radius: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    &-icon {
+      width: 5rem;
+      height: 5rem;
+      background-color: rgb(68, 0, 255);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 3rem;
+      &-dis {
+        font-size: 1.5rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+    &-txt {
+      max-width: 80%;
+      font-size: 1.2rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-top: 1rem;
+    }
+    &-box {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+      height: auto;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    &-link {
+      color: yellow;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.fa-brands {
+  font-size: 2rem;
+  color: #fff;
+}
+#ran {
+  background: #020024;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+#square__last {
+  @media only screen and (max-width: 994px) {
+    margin-bottom: 0.5rem;
+  }
+}

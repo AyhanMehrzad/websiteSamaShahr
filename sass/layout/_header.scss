@@ -1,0 +1,217 @@
+.header {
+  height: 100%;
+
+  &__top {
+    z-index: 2;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 25%;
+    left: 25%;
+    &-menu {
+      width: 100rem;
+      height: 100%;
+      background-color: #181414;
+      z-index: 3;
+      border-bottom-right-radius: 5rem;
+      border-bottom-left-radius: 5rem;
+      box-shadow: 1px 7px 5px 0px rgba(11, 11, 64, 0.75);
+      -webkit-box-shadow: 1px 7px 5px 0px rgba(11, 11, 64, 1);
+      -moz-box-shadow: 1px 7px 5px 0px rgba(11, 11, 64, 1);
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      object-fit: cover;
+      padding: 2rem;
+      font-size: 4rem;
+    }
+  }
+  &__bottom {
+    width: 100%;
+    height: 100%;
+    &-pic {
+      width: 100%;
+      height: 100%;
+    }
+    &-photo {
+      height: 100%;
+      object-fit: fill;
+    }
+    &-grad {
+      top: 0;
+      right: 0;
+      opacity: 50%;
+      background: #020024;
+      background: linear-gradient(
+        201deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(6, 6, 71, 1) 66%,
+        rgba(0, 212, 255, 1) 100%
+      );
+    }
+    &-items {
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background: #f2f2f2;
+      background: linear-gradient(
+        162deg,
+        rgba(242, 242, 242, 0.01) 0%,
+        rgba(164, 164, 245, 0.1) 1000%,
+        rgba(19, 20, 20, 0.1) 20%
+      );
+      opacity: 100%;
+      z-index: 2;
+    }
+    &-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-title {
+      font-size: 10rem;
+      color: gray;
+      text-align: center;
+      font-weight: 700;
+      z-index: 2000;
+    }
+    &-cut {
+      width: 100%;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-line {
+      height: 10px;
+      width: 40%;
+      background-color: black;
+      border-radius: 50rem;
+    }
+    &-price {
+      display: flex;
+      justify-content: center;
+    }
+    &-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    &-start {
+      font-size: 5rem;
+      color: gray;
+    }
+    &-aed {
+      font-size: 3rem;
+      color: gray;
+      font-weight: bold;
+    }
+    &-des {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-list {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 2rem;
+      color: wheat;
+    }
+    &-last {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+header {
+  height: 96rem;
+}
+.button {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  border-radius: 8px;
+  width: 340px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0px 15px;
+  border: none;
+  color: white;
+  position: relative;
+  cursor: pointer;
+  font-weight: 700;
+  transition-duration: 0.2s;
+  background-color: var(--ch-black);
+  margin-top: 30px;
+  font-size: rem;
+  font-size: 1.5rem;
+}
+
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    var(--ch-black),
+    var(--eer-black),
+    var(--night-rider),
+    var(--ch-white),
+    var(--night-rider),
+    var(--eer-black),
+    var(--ch-black),
+    var(--ch-black)
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button:after {
+  filter: blur(50px);
+}
+#pick {
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: fill;
+}

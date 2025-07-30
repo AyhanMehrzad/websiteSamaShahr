@@ -1,0 +1,44 @@
+.text {
+  height: 50rem;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__left {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  &__right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: wheat;
+    flex-direction: column;
+    &-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    &-dis {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    &-link {
+      font-size: 1.5rem;
+      font-weight: 400;
+          color: wheat;
+          text-decoration: underline;
+    }
+    &-img{
+      width: 69rem;
+      height: 35rem;
+      border-radius: 1.5rem;
+    }
+
+  }
+}

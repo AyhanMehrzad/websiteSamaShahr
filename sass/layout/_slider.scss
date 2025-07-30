@@ -1,0 +1,39 @@
+.slider {
+  height: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    &__pic{
+        width: 25rem;
+        height: 25rem;
+        object-fit: cover;
+    }
+    &__btn{
+        width: 15rem;
+        height: 3rem;
+        background-color: wheat;
+        color: chocolate;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.7rem;
+        font-size: 2rem;
+        margin-top: 1.5rem;
+    }
+    &__dis{
+        font-size: 1.5rem;
+        font-weight: 400;
+        
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+    }
+    &__maker{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
