@@ -36,20 +36,11 @@ class HomeController extends Controller {
                 $email = $this->sanitizeInput($data['email']);
                 $message = $this->sanitizeInput($data['message']);
                 
-                // Save to database
-                try {
-                    $this->db->insert('contacts', [
-                        'name' => $name,
-                        'email' => $email,
-                        'message' => $message,
-                        'created_at' => date('Y-m-d H:i:s')
-                    ]);
-                    
-                    $this->setFlash('message', 'Thank you for your message! We will get back to you soon.');
-                    $this->redirect('/');
-                } catch (Exception $e) {
-                    $errors[] = 'Failed to send message. Please try again.';
-                }
+                // Log the contact form submission
+                $this->logger->logAccess();
+                
+                $this->setFlash('message', 'Thank you for your message! We will get back to you soon.');
+                $this->redirect('/');
             }
             
             if ($this->isAjax()) {
@@ -64,8 +55,21 @@ class HomeController extends Controller {
     }
     
     public function projects() {
-        // Get projects from database
-        $projects = $this->db->fetchAll("SELECT * FROM projects ORDER BY created_at DESC");
+        // Static projects data for single page website
+        $projects = [
+            [
+                'id' => 1,
+                'title' => 'Sama Shahr Development',
+                'description' => 'A modern residential development project',
+                'image' => 'pic/project1.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Urban Planning Project',
+                'description' => 'Comprehensive urban planning and design',
+                'image' => 'pic/project2.jpg'
+            ]
+        ];
         
         return $this->view('projects', [
             'title' => 'Our Projects - Sama Shahr',
@@ -74,7 +78,23 @@ class HomeController extends Controller {
     }
     
     public function project($id) {
-        $project = $this->db->fetch("SELECT * FROM projects WHERE id = ?", [$id]);
+        // Static project data
+        $projects = [
+            1 => [
+                'id' => 1,
+                'title' => 'Sama Shahr Development',
+                'description' => 'A modern residential development project',
+                'image' => 'pic/project1.jpg'
+            ],
+            2 => [
+                'id' => 2,
+                'title' => 'Urban Planning Project',
+                'description' => 'Comprehensive urban planning and design',
+                'image' => 'pic/project2.jpg'
+            ]
+        ];
+        
+        $project = $projects[$id] ?? null;
         
         if (!$project) {
             http_response_code(404);

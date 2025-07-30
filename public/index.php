@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/DB_connect.php';
 require_once __DIR__ . '/logger.php';
 
 // Initialize logger with Telegram bot credentials

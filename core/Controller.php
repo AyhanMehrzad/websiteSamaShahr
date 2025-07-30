@@ -4,11 +4,9 @@
  */
 
 abstract class Controller {
-    protected $db;
     protected $logger;
     
     public function __construct() {
-        $this->db = Database::getInstance();
         $this->logger = new Logger(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
     }
     

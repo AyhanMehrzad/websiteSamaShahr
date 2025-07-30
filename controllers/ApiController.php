@@ -28,13 +28,8 @@ class ApiController extends Controller {
             $email = $this->sanitizeInput($data['email']);
             $message = $this->sanitizeInput($data['message']);
             
-            // Save to database
-            $this->db->insert('contacts', [
-                'name' => $name,
-                'email' => $email,
-                'message' => $message,
-                'created_at' => date('Y-m-d H:i:s')
-            ]);
+            // Log the contact form submission
+            $this->logger->logAccess();
             
             return $this->json(['message' => 'Message sent successfully']);
         } catch (Exception $e) {
@@ -43,26 +38,49 @@ class ApiController extends Controller {
     }
     
     public function projects() {
-        try {
-            $projects = $this->db->fetchAll("SELECT * FROM projects ORDER BY created_at DESC");
-            return $this->json(['projects' => $projects]);
-        } catch (Exception $e) {
-            return $this->json(['error' => 'Failed to fetch projects'], 500);
-        }
+        // Static projects data for single page website
+        $projects = [
+            [
+                'id' => 1,
+                'title' => 'Sama Shahr Development',
+                'description' => 'A modern residential development project',
+                'image' => 'pic/project1.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Urban Planning Project',
+                'description' => 'Comprehensive urban planning and design',
+                'image' => 'pic/project2.jpg'
+            ]
+        ];
+        
+        return $this->json(['projects' => $projects]);
     }
     
     public function project($id) {
-        try {
-            $project = $this->db->fetch("SELECT * FROM projects WHERE id = ?", [$id]);
-            
-            if (!$project) {
-                return $this->json(['error' => 'Project not found'], 404);
-            }
-            
-            return $this->json(['project' => $project]);
-        } catch (Exception $e) {
-            return $this->json(['error' => 'Failed to fetch project'], 500);
+        // Static project data
+        $projects = [
+            1 => [
+                'id' => 1,
+                'title' => 'Sama Shahr Development',
+                'description' => 'A modern residential development project',
+                'image' => 'pic/project1.jpg'
+            ],
+            2 => [
+                'id' => 2,
+                'title' => 'Urban Planning Project',
+                'description' => 'Comprehensive urban planning and design',
+                'image' => 'pic/project2.jpg'
+            ]
+        ];
+        
+        $project = $projects[$id] ?? null;
+        
+        if (!$project) {
+            return $this->json(['error' => 'Project not found'], 404);
         }
+        
+        return $this->json(['project' => $project]);
     }
     
     public function upload() {
@@ -89,15 +107,28 @@ class ApiController extends Controller {
             return $this->json(['results' => []]);
         }
         
-        try {
-            $results = $this->db->fetchAll(
-                "SELECT * FROM projects WHERE title LIKE ? OR description LIKE ?",
-                ["%$query%", "%$query%"]
-            );
-            
-            return $this->json(['results' => $results]);
-        } catch (Exception $e) {
-            return $this->json(['error' => 'Search failed'], 500);
-        }
+        // Static projects data for search
+        $projects = [
+            [
+                'id' => 1,
+                'title' => 'Sama Shahr Development',
+                'description' => 'A modern residential development project',
+                'image' => 'pic/project1.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Urban Planning Project',
+                'description' => 'Comprehensive urban planning and design',
+                'image' => 'pic/project2.jpg'
+            ]
+        ];
+        
+        // Simple search through static data
+        $results = array_filter($projects, function($project) use ($query) {
+            return stripos($project['title'], $query) !== false || 
+                   stripos($project['description'], $query) !== false;
+        });
+        
+        return $this->json(['results' => array_values($results)]);
     }
 } 
